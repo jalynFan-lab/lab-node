@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-在浏览器中使用art-template</title>
+</head>
+<body>
+<script scr="02/code/node_modules/art-template/lib/template-web.js"></script>
+<script type="text/template" id="tpl">
+
+hello {{ name }}
+
+</script>
+<script>
+    var ret=template('',{
+        name:'Jack'
+    })
+    console.log(ret)
+    
+</script>
+</body>
+</html>
