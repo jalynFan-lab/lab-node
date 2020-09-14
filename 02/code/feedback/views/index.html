@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="/public/lib/bootstrap-4.3.1/dist/css/bootstrap.css">
+    </head>
+    <body>
+    <div class="header container">
+       <div class="page-header">
+        <h1>Example page header<small>Subtext for header</small></h1>
+        <a role="button" class=" btn btn-success" href="/post">发表留言</a>
+       </div>
+    </div>
+    
+    <div class="comments container">
+        <ul class="list-group">
+            {{each comments}}
+            <li class="list-group-item">
+                {{$value.name}} 说 : {{$value.message}}
+                <span class="float-right">{{$value.dateTime}}</span>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    </body>
+</html>

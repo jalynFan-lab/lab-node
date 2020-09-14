@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+<form action="" id="user_form">
+    
+</form>
+<script type="text/template" id="tpl">
+    <div>
+        <label for="">用户名</label>
+        <input type="text" value="{{user.username}}">
+    </div>
+    <div>
+        <label for="">年龄</label>
+        <input type="text" value="{{user.age}}">
+    </div>
+    <div>
+        <label for="">职业</label>
+        <select name="" id="">
+            
+            {{each jobs}}
+                {{ if user.job === $value.id }}
+                <option value="{{ $value.id }}" selected>{{ $value.name }}</option>
+                {{ else }}
+                <option value="{{ $value.id }}">{{ $value.name }}</option>
+                {{ /if }}
+            {{/each}}
+        </select>
+    </div>
+</script>
+<script src="node_modules/art-template/lib/template-web.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+
+var data={}
+    $.get('http://localhost:3000/users/1')
+        .then(function(userData){
+           data.user=userData
+            return  $.get('http://localhost:3000/jobs')
+        })
+        .then(function(jobsData){
+            data.jobs=jobsData
+            var htmlStr = template('tpl',data)
+            console.log(htmlStr)
+            document.querySelector("#user_form").innerHTML=htmlStr
+        })
+
+</script>
+    </body>
+</html>
